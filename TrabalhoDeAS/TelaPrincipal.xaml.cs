@@ -22,6 +22,9 @@ namespace TrabalhoDeAS
         public TelaPrincipal()
         {
             InitializeComponent();
+            DataContext = Produto.Produtos();
         }
+
+        
     }
 }

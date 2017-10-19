@@ -39,5 +39,17 @@ namespace TrabalhoDeAS
             }
                 
         }
+
+        private void Teste(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Logar(null, null);
+
+        }
+
+        private void OnLoad(object sender, RoutedEventArgs e)
+        {
+            txtId.Focus();
+        }
     }
 }

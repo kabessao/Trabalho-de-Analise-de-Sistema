@@ -5,163 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrabalhoDeAS"
         mc:Ignorable="d"
-        ResizeMode="CanMinimize"
-        Title="TelaPrincipal" SizeToContent="Height" Width="250">
-    <TabControl>
-        <TabControl.Resources>
-            <Style TargetType="Grid">
-                <Setter Property="Margin" Value="0 5 0 0"/>
-            </Style>
-        </TabControl.Resources>
-        <TabItem Header="Pedidos">
-            
-            <StackPanel Margin="5">
-                <TextBlock FontWeight="Bold" 
-                       Text="Cadastro de pedidos:"
-                       Margin="0 0 0 5"/>
-
-                <Grid Margin=" 0 0 0 5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Nº do pedido:"/>
-                    <TextBox Grid.Column="1"/>
-                </Grid>
-
-                <GroupBox Header="Pedido"
-                      Margin="0 0 0 5">
-                    <StackPanel>
-                        <TextBlock Text="Produto pedido:"/>
-                        <ComboBox SelectedIndex="0"
-                              Margin="0 0 0 5">
-                            <ComboBoxItem>Picole normal</ComboBoxItem>
-                        </ComboBox>
-                        <Grid Margin="0 0 0 5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Quantidade:"/>
-                            <TextBox Text="0"
-                                 Grid.Column="1"
-                                 TextAlignment="Right"/>
-                        </Grid>
-                        <Button Content="Adicionar a conta"/>
-
-                    </StackPanel>
-                </GroupBox>
-                <Grid Margin="0 0 0 5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Nº da mesa:"/>
-                    <TextBox Text="0"
-                         Grid.Column="1"/>
-
-                </Grid>
-                <Grid Margin="0 0 0 5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Valor final:"/>
-                    <Grid Grid.Column="1">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Tela de pedidos" Height="400" Width="240">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0 2 0 0"/>
+        </Style>
+    </Window.Resources>
+    <Border Padding="5">
+        <StackPanel >
+            <ScrollViewer Height="220" >
+                <StackPanel x:Name="Painel">
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="R$:" HorizontalAlignment="Right"/>
-                        <Label Content="0,00"
-                           Grid.Column="1" Padding="-1"/>
-
+                        <TextBlock>Produto</TextBlock>
+                        <ComboBox >
+                            
+                            
+                        </ComboBox>
+                        
                     </Grid>
-                </Grid>
-                <Separator/>
-                <TextBox Text="Método de pagamento:"
-                     FontWeight="Bold"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                </StackPanel>
+            </ScrollViewer>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Margin="0 0 1 0">apagar tudo</Button>
+                <Button Grid.Column="1"
+                        Margin="1 0 0 0">
+                    apagar item
+                </Button>
+            </Grid>
+            <Grid Margin="0 5 0 0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Valor Total:"/>
 
-                    <RadioButton Content="Cartão"/>
-                    <RadioButton Content="Dinheiro"
-                             Grid.Column="1"/>
-                    <RadioButton Content="Fiado"
-                             Grid.Column="2"/>
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Lista de compra"
-                        Margin="0 0 2.5 0"/>
-                    <Button Content="Realizar compra"
-                        Grid.Column="1"
-                        Margin="2.5 0 0 0"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="R$:"/>
+                    <TextBlock Text="0,00" x:Name="txtTotal"/>
+                </StackPanel>
+                
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Numero do pedido"/>
 
-                </Grid>
+                <TextBlock x:Name="txtNumeroPedido" Text="000000"
+                           Grid.Column="1"></TextBlock>
 
-            </StackPanel>
-        </TabItem>
+            </Grid>
 
-        <TabItem Header="Inadimplencia">
-            <StackPanel Margin="5">
-                <StackPanel.Resources>
-                    <Style TargetType="TextBox">
-                        <Setter Property="Margin"
-                                Value="0 0 0 5"/>
-                    </Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Margin"
-                                Value="0 0 0 5"/>
-                    </Style>
-                </StackPanel.Resources>
-                <TextBlock Text="Controle de Inadimplencia:"
-                           FontWeight="Bold"
-                           Margin="0 0 0 6"/>
+            <Button >Finalizar compra</Button>
 
-
-                <TextBlock Text="Pesquisar por nome:"/>
-                <TextBox  />
-                <GroupBox Header="Conta">
-                    <StackPanel>
-                        <TextBlock Text="Nome:"/>
-                        <TextBox />
-                        <TextBlock Text="Endereço:"/>
-                        <TextBox />
-                        <Grid>
-                            <Grid.Resources>
-                                <Style TargetType="TextBox"/>
-                            </Grid.Resources>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Margin="0 0 1.5 0"
-                                        Grid.Column="1">
-                                <TextBlock Text="Fone:"/>
-                                <TextBox />
-                            </StackPanel>
-                            <StackPanel Grid.Column="0"
-                                Margin="1.5 0 0 0">
-                                <TextBlock Text="Data da conta:"/>
-                                <DatePickerTextBox Text="[Selecione a data]"/>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
-                </GroupBox>
-
-
-            </StackPanel>
-            
-        </TabItem>
-        
-       
-    </TabControl>
+            <Button >Adicionar à lista de inadimplencia</Button>
+        </StackPanel>
+    </Border>
 </Window>
